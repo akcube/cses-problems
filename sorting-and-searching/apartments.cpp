@@ -24,22 +24,28 @@ typedef pair<int, int> pi;
 int main(void){
 	usainbolt;
 	//file_read
-	int n;
-	cin>>n;
-	int ct5 = 0;
 
-	for(int i = 5; i<=n; i+=5){
-		int ncpy = i;
-		for(; ncpy>0;){
-			if(ncpy%5==0){
-				ct5++;
-				ncpy/=5;
-			}
-			else
-				break;
+	int n, m, k;
+	cin>>n>>m>>k;
+	int arr[n];
+	multiset<int> app;
+	for(int i=0; i<n; i++){
+		cin>>arr[i];
+	}
+	for(int i=0; i<m; i++){
+		int x;
+		cin>>x;
+		app.insert(x);
+	}
+	sort(arr, arr+n);
+	int ct = 0;
+	for(int i=0; i<n; i++){
+		auto x = app.lower_bound(arr[i]-k);
+		if(x!=app.end() && *x <= arr[i]+k){
+			ct++;
+			app.erase(x);
 		}
 	}
 
-	cout<<ct5;
-	
+	cout<<ct<<endl;
 }

@@ -5,6 +5,7 @@ using namespace std;
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int, int> pi;
+typedef vector<vi> vii;
 
 #define f first
 #define s second
@@ -18,28 +19,22 @@ typedef pair<int, int> pi;
 #define endl "\n"
 #define usainbolt cin.tie(0) -> sync_with_stdio(0)
 
+void recurse(int n){
+	if(n==1){
+		cout<<1<<" "<<3<<endl;
+	}
+	
 
 
+}
 
 int main(void){
 	usainbolt;
 	//file_read
+	
 	int n;
 	cin>>n;
-	int ct5 = 0;
 
-	for(int i = 5; i<=n; i+=5){
-		int ncpy = i;
-		for(; ncpy>0;){
-			if(ncpy%5==0){
-				ct5++;
-				ncpy/=5;
-			}
-			else
-				break;
-		}
-	}
+	recurse(n);
 
-	cout<<ct5;
-	
 }

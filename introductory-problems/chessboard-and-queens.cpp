@@ -24,22 +24,7 @@ typedef pair<int, int> pi;
 int main(void){
 	usainbolt;
 	//file_read
-	int n;
-	cin>>n;
-	int ct5 = 0;
 
-	for(int i = 5; i<=n; i+=5){
-		int ncpy = i;
-		for(; ncpy>0;){
-			if(ncpy%5==0){
-				ct5++;
-				ncpy/=5;
-			}
-			else
-				break;
-		}
-	}
-
-	cout<<ct5;
+	
 	
 }

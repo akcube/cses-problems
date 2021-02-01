@@ -4,6 +4,7 @@ using namespace std;
 
 typedef long long ll;
 typedef vector<int> vi;
+typedef vector<vi> vii;
 typedef pair<int, int> pi;
 
 #define f first
@@ -19,27 +20,44 @@ typedef pair<int, int> pi;
 #define usainbolt cin.tie(0) -> sync_with_stdio(0)
 
 
-
+void dfs(int n, vii &arr, vi &vis, int k, int node){
+	if(vis[node]!=-1)
+		return;
+	vis[node] = k;
+	for(auto x:arr[node]){
+		dfs(n, arr, vis, k, x);
+	}
+}
 
 int main(void){
 	usainbolt;
 	//file_read
-	int n;
-	cin>>n;
-	int ct5 = 0;
+	int n, m;
+	cin>>n>>m;
 
-	for(int i = 5; i<=n; i+=5){
-		int ncpy = i;
-		for(; ncpy>0;){
-			if(ncpy%5==0){
-				ct5++;
-				ncpy/=5;
-			}
-			else
-				break;
+	vii arr(n);
+	for(int i=0; i<m; i++){
+		int x, y;
+		cin>>x>>y;
+		x--, y--;
+		arr[x].pb(y);
+		arr[y].pb(x);
+	}
+
+	vi vis(n, -1);
+	int k = 0;
+
+	for(int i=0; i<n; i++){
+		if(vis[i]==-1){
+			dfs(n, arr, vis, k, i);
+			k++;
 		}
 	}
 
-	cout<<ct5;
-	
+	if(k==1){
+		cout<<"IMPOSSIBLE"<<endl;
+	}
+	else{
+		cout<<k<<endl;
+	}
 }
